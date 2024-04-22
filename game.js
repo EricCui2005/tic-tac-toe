@@ -124,6 +124,10 @@ function GameController(playerOneName = "Player One", playerTwoName = "Player Tw
         switchPlayerTurn();
     }
 
+    function printConsoleBoard() {
+        board.printBoard();
+    }
+
     // Function to play a game of tic tac toe in the console
     function playConsoleGame() {
         console.log("Welcome to Tic Tac Toe!");
@@ -163,5 +167,7 @@ function GameController(playerOneName = "Player One", playerTwoName = "Player Tw
     }
 
     // Returning the GameController object
-    return { players, switchPlayerTurn, getActivePlayer, checkWin, playConsoleGame };
+    return { players, switchPlayerTurn, getActivePlayer, checkWin, printConsoleBoard, playConsoleGame };
 }
+
+export { Gameboard, GameController };

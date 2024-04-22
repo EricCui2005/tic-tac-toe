@@ -1,3 +1,7 @@
+import { Gameboard, GameController } from './game.js';
+
+let game = GameController('Player 1', 'Player 2');
+
 // Initializing the playboard
 let playBoard = document.querySelector('#board');
 
@@ -19,9 +23,12 @@ for (let i = 0; i < 3; i++) {
         cell.classList.add('cell');
         cell.id = 'row' + j;
 
-        // cell.addEventListener('click', () => {
-            
-        // });
+        cell.addEventListener('click', () => {
+            console.log('Cell clicked: ' + i + ', ' + j);
+            console.log('Active player: ' + game.getActivePlayer().name);
+            console.log(game.printConsoleBoard());
+            game.switchPlayerTurn();
+        });
         row.appendChild(cell);
     }
     playBoard.appendChild(row);
