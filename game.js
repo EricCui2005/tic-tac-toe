@@ -1,5 +1,5 @@
 // Gameboard object
-export function Gameboard() {
+function Gameboard() {
 
     // Constant associated with the gameboard
     const rows = 3;
@@ -42,7 +42,7 @@ export function Gameboard() {
 // Function to control the flow of the game
 // playerOneName: name of player one
 // playerTwoName: name of player two
-export function GameController(playerOneName = "Player One", playerTwoName = "Player Two") {
+function GameController(playerOneName = "Player One", playerTwoName = "Player Two") {
 
     // Initializing our gameboard
     let board = Gameboard();
@@ -165,5 +165,3 @@ export function GameController(playerOneName = "Player One", playerTwoName = "Pl
     // Returning the GameController object
     return { players, switchPlayerTurn, getActivePlayer, checkWin, playConsoleGame };
 }
-
-export { Gameboard, GameController };

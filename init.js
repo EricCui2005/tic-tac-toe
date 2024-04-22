@@ -1,5 +1,3 @@
-import { Gameboard, GameController } from './game.js';
-
 // Initializing the playboard
 let playBoard = document.querySelector('#board');
 
@@ -21,9 +19,9 @@ for (let i = 0; i < 3; i++) {
         cell.classList.add('cell');
         cell.id = 'row' + j;
 
-        cell.addEventListener('click', () => {
+        // cell.addEventListener('click', () => {
             
-        });
+        // });
         row.appendChild(cell);
     }
     playBoard.appendChild(row);
