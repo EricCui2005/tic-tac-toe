@@ -1,5 +1,5 @@
-// Game board object
-function Gameboard() {
+// Gameboard object
+export function Gameboard() {
 
     // Constant associated with the gameboard
     const rows = 3;
@@ -42,7 +42,10 @@ function Gameboard() {
 // Function to control the flow of the game
 // playerOneName: name of player one
 // playerTwoName: name of player two
-function GameController(playerOneName = "Player One", playerTwoName = "Player Two") {
+export function GameController(playerOneName = "Player One", playerTwoName = "Player Two") {
+
+    // Initializing our gameboard
+    let board = Gameboard();
     
     // Array of players
     const players = [
@@ -116,12 +119,17 @@ function GameController(playerOneName = "Player One", playerTwoName = "Player Tw
         return 0;
     }
 
+    function playMove(row, column) {     
+        board.addMark(row, column, activePlayer);
+        switchPlayerTurn();
+    }
+
     // Function to play a game of tic tac toe in the console
     function playConsoleGame() {
         console.log("Welcome to Tic Tac Toe!");
 
         // Initializing an empty gameboard
-        let board = Gameboard();
+        board = Gameboard();
 
         // Printing the initial state of the gameboard
         board.printBoard();
@@ -157,3 +165,5 @@ function GameController(playerOneName = "Player One", playerTwoName = "Player Tw
     // Returning the GameController object
     return { players, switchPlayerTurn, getActivePlayer, checkWin, playConsoleGame };
 }
+
+export { Gameboard, GameController };

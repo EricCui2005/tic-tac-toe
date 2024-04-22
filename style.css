@@ -9,8 +9,10 @@ html, body {
 }
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 30px;
 }
 
 /* Flex context for the board */
@@ -31,6 +33,6 @@ body {
 .cell {
     height: 100px;
     width: 100px;
-    border: solid red 1px;
+    border: solid black 1px;
 }
 
