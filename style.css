@@ -1,0 +1,21 @@
+/* Flex context for the board */
+#board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Flex context for the rows */
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+/* Formatting for each play cell */
+.cell {
+    height: 100px;
+    width: 100px;
+    border: solid red 1px;
+}
+
