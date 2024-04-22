@@ -72,7 +72,10 @@ function GameController(playerOneName = "Player One", playerTwoName = "Player Tw
     // Function to check for a win
     // gamestate: the current state of the gameboard
     // return: 0 for no winner, 1 for player1 win, 2 for player2 win
-    const checkWin = (gamestate) => {
+    const checkWin = () => {
+
+        // Getting the current state of the board
+        let gamestate = board.getBoard();
 
         // Check rows for a win
         for (let i = 0; i < 3; i++) {
@@ -114,13 +117,13 @@ function GameController(playerOneName = "Player One", playerTwoName = "Player Tw
         if (isFilled) {
             return -1; // Return -1 to indicate a draw
         }
-
+        
         // No winner found
         return 0;
     }
 
-    function playMove(row, column) {     
-        board.addMark(row, column, activePlayer);
+    function playMove(row, column, activePlayer) {     
+        board.addMark(row, column, activePlayer.mark);
         switchPlayerTurn();
     }
 
@@ -167,7 +170,7 @@ function GameController(playerOneName = "Player One", playerTwoName = "Player Tw
     }
 
     // Returning the GameController object
-    return { players, switchPlayerTurn, getActivePlayer, checkWin, printConsoleBoard, playConsoleGame };
+    return { players, switchPlayerTurn, getActivePlayer, checkWin, printConsoleBoard, playConsoleGame, playMove };
 }
 
 export { Gameboard, GameController };

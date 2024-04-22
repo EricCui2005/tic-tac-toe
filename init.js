@@ -21,17 +21,32 @@ for (let i = 0; i < 3; i++) {
 
         // Adding classes and id's for identification
         cell.classList.add('cell');
-        cell.id = 'row' + j;
-
-        cell.addEventListener('click', () => {
-            console.log('Cell clicked: ' + i + ', ' + j);
-            console.log('Active player: ' + game.getActivePlayer().name);
-            console.log(game.printConsoleBoard());
-            game.switchPlayerTurn();
-        });
+        cell.id = `cell${i}${j}`;
         row.appendChild(cell);
     }
     playBoard.appendChild(row);
 }
 
+// Creating event manager to update board
+let buttonDetector = document.getElementById('board');
+buttonDetector.addEventListener('click', (e) => {
+
+    // Identifies and performs logic on a button
+    let target = e.target;
+    if (target.classList.contains('cell')) {
+
+        // Parsing row and column of button based on id
+        let row = parseInt(target.id[4]);
+        let column = parseInt(target.id[5]);
+
+        // Moving on the board
+        game.playMove(row, column, game.getActivePlayer());
+        game.checkWin();
+
+        game.printConsoleBoard();
+    }
+});
+
+// Play and reset buttons
 let playButton = document.getElementById('play');
+let resetButton = document.getElementById('reset');
