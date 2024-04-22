@@ -61,6 +61,8 @@ function GameController(playerOneName = "Player One", playerTwoName = "Player Tw
 
     let activePlayer = players[0];
 
+    const getGameState = () => board.getBoard();
+
     // Function to switch the active player
     const switchPlayerTurn = () => {
         activePlayer = activePlayer === players[0] ? players[1] : players[0];
@@ -117,7 +119,7 @@ function GameController(playerOneName = "Player One", playerTwoName = "Player Tw
         if (isFilled) {
             return -1; // Return -1 to indicate a draw
         }
-        
+
         // No winner found
         return 0;
     }
@@ -170,7 +172,7 @@ function GameController(playerOneName = "Player One", playerTwoName = "Player Tw
     }
 
     // Returning the GameController object
-    return { players, switchPlayerTurn, getActivePlayer, checkWin, printConsoleBoard, playConsoleGame, playMove };
+    return { players, switchPlayerTurn, getActivePlayer, checkWin, printConsoleBoard, playConsoleGame, playMove, getGameState };
 }
 
-export { Gameboard, GameController };
+export { GameController };

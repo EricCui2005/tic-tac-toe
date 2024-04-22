@@ -1,4 +1,4 @@
-import { Gameboard, GameController } from './game.js';
+import { GameController } from './game.js';
 
 let game = GameController('Player 1', 'Player 2');
 
