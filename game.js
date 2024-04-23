@@ -133,6 +133,12 @@ function GameController(playerOneName = "Player One", playerTwoName = "Player Tw
         board.printBoard();
     }
 
+    // Resets the internal representatino of the gameboard to empty
+    function resetGame() {
+        board = Gameboard();
+        activePlayer = players[0];
+    }
+
     // Function to play a game of tic tac toe in the console
     function playConsoleGame() {
         console.log("Welcome to Tic Tac Toe!");
@@ -172,7 +178,7 @@ function GameController(playerOneName = "Player One", playerTwoName = "Player Tw
     }
 
     // Returning the GameController object
-    return { players, switchPlayerTurn, getActivePlayer, checkWin, printConsoleBoard, playConsoleGame, playMove, getGameState };
+    return { players, switchPlayerTurn, getActivePlayer, checkWin, printConsoleBoard, playConsoleGame, playMove, getGameState, resetGame };
 }
 
 export { GameController };

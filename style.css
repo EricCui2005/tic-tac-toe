@@ -1,22 +1,22 @@
-/* Border debugging */
-/* * {
-    border: solid black 1px;
-} */
 
 /* Completely centering page content */
 html, body {
     height: 100%;
 }
+
+/* Flex context of body */
 body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
 }
 
 /* Flex context for the board */
 #board {
+
+    /* Flex info */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -35,4 +35,7 @@ body {
     width: 100px;
     border: solid black 1px;
 }
+
+
+
 

@@ -27,6 +27,8 @@ for (let i = 0; i < 3; i++) {
     playBoard.appendChild(row);
 }
 
+let gameStatus = document.getElementById('game-status');
+
 // Creating event manager to update board
 let buttonDetector = document.getElementById('board');
 buttonDetector.addEventListener('click', (e) => {
@@ -41,12 +43,42 @@ buttonDetector.addEventListener('click', (e) => {
 
         // Moving on the board
         game.playMove(row, column, game.getActivePlayer());
-        game.checkWin();
+        updateUI();
 
-        game.printConsoleBoard();
+        // Checking for a win
+        const state = game.checkWin();
+        if (state !== 0) {
+            let winner = '';
+            switch (state) {
+                case 1:
+                    gameStatus.textContent = 'Player 1 wins!';
+                    break;
+                case 2:
+                    gameStatus.textContent = 'Player 2 wins!';
+                    break;
+                case -1:
+                    gameStatus.textContent = 'It\'s a draw!';
+            }
+        }
     }
 });
+
+// Updates the board UI
+function updateUI() {
+    let board = game.getGameState();
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            let cell = document.getElementById(`cell${i}${j}`);
+            cell.textContent = board[i][j] === 1 ? 'X' : board[i][j] === 2 ? 'O' : '';
+        }
+    }
+}
 
 // Play and reset buttons
 let playButton = document.getElementById('play');
 let resetButton = document.getElementById('reset');
+resetButton.addEventListener('click', () => {
+    game.resetGame();
+    gameStatus.textContent = 'Playing...';
+    updateUI();
+});
